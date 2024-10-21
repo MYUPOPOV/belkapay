@@ -1,0 +1,67 @@
+---
+import { content } from "../scripts/content"
+import Card from "./SolutionsCard.astro"
+import bankImg from "../images/solutions/banks.png"
+import aviaImg from "../images/solutions/avia.png"
+import tspImg from "../images/solutions/tsp.png"
+import transportImg from "../images/solutions/transport.png"
+import p2pImg from "../images/solutions/p2p.png"
+
+const ctn = content.solutions
+---
+
+<section id="solutions" class="mt-[52px] md:mt-[96px]">
+  <div class="title">{ctn.title}</div>
+  <div class="cards mt-[32px]">
+    <Card 
+      title={ctn.banks.title}
+      text={ctn.banks.text}
+      list={ctn.banks.list}
+      image={bankImg}
+    />
+    <Card 
+      title={ctn.avia.title}
+      text={ctn.avia.text}
+      list={ctn.avia.list}
+      image={aviaImg}
+    />
+    <Card 
+      title={ctn.tsp.title}
+      text={ctn.tsp.text}
+      list={ctn.tsp.list}
+      image={tspImg}
+    />
+    <Card 
+      title={ctn.transport.title}
+      text={ctn.transport.text}
+      list={ctn.transport.list}
+      image={transportImg}
+    />
+    <Card 
+      title={ctn.p2p.title}
+      text={ctn.p2p.text}
+      list={ctn.p2p.list}
+      image={p2pImg}
+    />
+  </div>
+</section>
+
+
+<style lang="scss">
+  .cards {
+    display: grid;
+
+    grid-gap: 24px;
+    @include media('>=tablet') {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 32px;
+    }
+    @include media('>=desktop') {
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+  }
+</style>

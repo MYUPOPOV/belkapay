@@ -1,0 +1,68 @@
+---
+import { content } from '../scripts/content';
+import { Picture } from 'astro:assets';
+
+interface Props {
+  title: string;
+  text: string;
+  list: Array<string>;
+  image: any;
+}
+
+const { title, text, list, image } = Astro.props;
+const pictureAlt = content.info.image + ': ' + title;
+---
+
+<div class="card">
+  <div class="image">
+    <Picture
+      src={image}
+      formats={['avif', 'webp']}
+      alt={pictureAlt}
+      class="m-auto"
+      width=320
+      densities={[1.5, 2]}
+    />
+  </div>
+  <div class="title">{title}</div>
+  <div class="my-[16px]">{text}</div>
+  <ul class="list">
+    {list.map((item) => <li class="item">{item}</li>)}
+  </ul>
+</div>
+
+<style lang="scss">
+  .card {
+    flex: 0 0 30%;
+    width: 100%;
+    min-height: 596px;
+    border-radius: 16px;
+    background: #fff;
+    padding: 16px;
+  }
+  .image {
+    border-radius: 8px;
+    background: #EFF1F4;
+    padding: 8px;
+    display: flex;
+    height: 300px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+  }
+  .title {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 28px;
+    margin-top: 24px;
+  }
+  .list {
+    color: #8291AE;
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 20px;
+    
+  }
+</style>

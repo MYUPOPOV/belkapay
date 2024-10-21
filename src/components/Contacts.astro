@@ -1,0 +1,194 @@
+---
+import { content } from "../scripts/content"
+import Button from "./RequestButton.astro"
+
+
+const ctn = content.contacts
+const isContacts = true
+---
+
+<section id="contacts" class="mt-[96px]">
+  <div class="contacts-block">
+    <div  class="left">
+      <div class="title">{ctn.title}</div>
+      {
+        ctn.list.map((item) => (
+          <div class="item-title mt-[24px]">{item.title}</div>
+          <div class="mt-[12px]">
+            {
+              item.textArr.map((item) => (
+                <div><a href={item.link}>{item.text}</a></div>
+              ))
+            }
+          </div>
+        ))
+      }
+    </div>
+    <div class="right">
+      <div class="feedback-form">
+        <div class="input">
+          <div class="input-block">
+            <div class="input-label">{ctn.inputs[0].label}</div>
+            <input id="name" placeholder={ctn.inputs[0].placeholder} />
+          </div>
+          <div class="input-block">
+            <div class="input-label">{ctn.inputs[1].label}</div>
+            <input id="email" placeholder={ctn.inputs[1].placeholder} />
+          </div>
+          <div class="input-block">
+            <div class="input-label">{ctn.inputs[2].label}</div>
+            <textarea id="comment" placeholder={ctn.inputs[2].placeholder} class="input-comment" />
+          </div>
+        </div>
+        <div class="button">
+          <div class="w-[100%]">
+            <Button isContacts={isContacts} />
+          </div>
+          <div class="button-text">{ctn.text}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style lang="scss">
+  .contacts-block {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0px;
+    gap: 24px;
+    @include media('>=tablet') {
+      padding: 96px 0px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+
+    }
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    // gap: 24px;
+    flex: 1 0 0;
+  }
+  .item-title {
+    font-weight: 800;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 0;
+  }
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+  }
+  .input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    &-label {
+    margin-bottom: 10px;
+  }
+    &-block {
+      width: 100%;
+    }
+    &-comment {
+      height: 146px;
+    }
+    & input, & textarea {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #CAD2E1;
+      display: flex;
+      padding: 15px;
+      align-items: flex-start;
+      gap: 10px;
+      align-self: stretch;
+      resize: none;
+    }
+    & input:focus, & textarea:focus {
+      outline: none;
+    }
+  }
+  .button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    &-text {
+      color: #8291AE;
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 8px;
+      @include media('>=tablet') {
+        width: 470px;
+      }
+    }
+  }
+  .invalid {
+    border: 1px solid #C30F22 !important;
+    background-color: #c30f2105;
+  }
+</style>
+
+<script>
+  import { email } from '@rbs/tools/validation';
+  const button = document.getElementById('submit');
+  const nameInput = document.getElementById('name') as HTMLInputElement;
+  const emailInput = document.getElementById('email') as HTMLInputElement;
+  const commentInput = document.getElementById('comment') as HTMLInputElement;
+
+  "keyup paste mouseup".split(" ").forEach(function(e){
+      // window.addEventListener(e,mouseMoveHandler,false);
+
+      nameInput.addEventListener(e, () => {
+        checkInput(nameInput.value, nameInput, validateName)
+      })
+      emailInput.addEventListener(e, () => {
+        checkInput(emailInput.value, emailInput, validateEmail)
+      })
+      commentInput.addEventListener(e, () => {
+        checkInput(commentInput.value, commentInput, validateComment)
+      })
+    });
+
+  button?.addEventListener('click', () => {
+    if (
+      checkInput(nameInput.value, nameInput, validateName) &&
+      checkInput(emailInput.value, emailInput, validateEmail) &&
+      checkInput(commentInput.value, commentInput, validateComment)
+    ) {
+      alert('Отпрвавка формы')
+    }
+  })
+
+  const validateName = (name: string) => {
+    return /[a-zA-Zа-яА-ЯёЁ '`.\-]{3,64}$/g.test(name);
+  }
+  const validateEmail = (emailAddress: string) => {
+    return !email({errorMessage: 'error'})(emailAddress);
+  }
+  const validateComment = (comment: string) => {
+    return !/[<>]/.test(comment);
+  }
+  const checkInput = (value: string, input: HTMLElement, validFunc: Function) => {
+    if (validFunc(value)) {
+      input.classList.remove('invalid')
+      return true
+    } else {
+      input.classList.add('invalid')
+      return false
+    }
+  }
+</script>

@@ -1,0 +1,53 @@
+---
+import { content } from "../scripts/content"
+import { Picture } from 'astro:assets';
+import Button from "./RequestButton.astro"
+import mainImage from "../images/main.png";
+
+const ctn = content.main
+const isContacts = false
+---
+
+<section class="mt-[40px] md:mt-[96px] flex flex-flexrow justify-between">
+  <div class="md:mr-[32px] max-w-[752px]">
+    <div class="title">
+      <span>{ctn.title}</span>
+      <span class="hightlight">White&nbsp;Label</span>:
+      <span>{ctn.subtitle}</span>
+    </div>
+    <div class="mt-[24px] font-semibold ">{ctn.text}</div>
+    <div class="mt-[32px] md:mt-[52px]">
+      <Button isContacts={isContacts} />
+    </div>
+  </div>
+  <div class="min-w-[42%] hidden md:block">
+    <Picture
+      src={mainImage}
+      formats={['avif', 'webp']}
+      alt="Mobile phone"
+      class="m-auto "
+      width={mainImage.width / 2}
+      densities={[1.5, 2]}
+    />
+  </div>
+</section>
+
+
+<style lang="scss">
+  .title {
+    color: #1F2D45;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 48px;
+    @include media('>=desktop'){
+      font-size: 64px;
+      line-height: 72px;
+    }
+  }
+  .hightlight {
+    background: linear-gradient(90deg, #C21022 39.26%, #FD0D0B 81.31%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

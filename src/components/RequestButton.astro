@@ -1,0 +1,52 @@
+---
+import { content } from "../scripts/content"
+import arrowSvg from "../images/icons/arrow.svg"
+
+interface Props {
+  isContacts: boolean;
+}
+
+const { isContacts } = Astro.props;
+---
+
+{!isContacts && 
+  (
+    <a href="#contacts">
+      <button class="btn">
+        <span class="mr-[8px]">
+          {content.main.btnText}
+        </span>
+        <img src={arrowSvg.src} alt="arrow" />
+      </button>
+    </a>
+  )
+}
+
+{isContacts && 
+  (
+    <button id="submit" class="btn">
+      <span class="mr-[8px]">
+        {content.main.btnText}
+      </span>
+      <img src={arrowSvg.src} alt="arrow" />
+    </button>
+  )
+}
+
+
+<style lang="scss">
+  .btn {
+    width: 100%;
+    color: #ffffff;
+    display: flex;
+    padding: 20px 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #C21022 0%, #FC0D0C 100%);
+    @include media('>=tablet') {
+      width: auto;
+    }
+  }
+
+</style>

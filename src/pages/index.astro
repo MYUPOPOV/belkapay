@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Main from '../components/Main.astro';
+import Solutions from '../components/Solutions.astro';
+import About from '../components/About.astro';
+import Principles from '../components/Principles.astro';
+import Contacts from '../components/Contacts.astro';
+import Footer from '../components/Footer.astro';
+
+const isIndexPage = true
+---
+
+<Layout title="BelkaPay">
+  <div class="wrapper">
+    <Header />
+    <main>
+      <Main />
+      <Solutions />
+      <About isIndexPage={isIndexPage} />
+      <Principles />
+    </main>
+  </div>
+  <div class="contacts">
+    <div class="wrapper">
+      <Contacts />
+    </div>
+  </div>
+  <div class="footer">
+    <div class="wrapper">
+      <Footer />
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .wrapper {
+    @include pageContent;
+    // min-width: 420px;
+    //   @include media('>=desktop') {
+    //     min-width: 1000px;
+    //     max-width: 1440px;
+    //     margin: auto;
+    //   }
+  }
+  .contacts {
+    width: 100%;
+    // height: 100px;
+    background-color: #ffffff;
+  }
+  .footer {
+    width: 100%;
+    // height: 100px;
+    background-color: #292929;
+  }
+
+</style>

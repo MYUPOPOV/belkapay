@@ -1,0 +1,103 @@
+---
+import { content } from "../scripts/content"
+import logoSvg from "../images/logo.svg"
+import crossSvg from "../images/icons/cross.svg"
+import phoneSvg from "../images/icons/phone.svg"
+import burgerSvg from "../images/icons/burger.svg"
+import NavButton from "./NavButton.astro"
+
+const ctn = content.info
+---
+
+<header class="mt-[24px] md:mt-[32px]">
+  <div class="flex items-center">
+    <img class="w-[137px] md:w-[110px] lg:w-[137px]" src={logoSvg.src} alt="logo"/>
+  </div>
+  <nav class="hidden md:flex flex-row items-center">
+    <NavButton
+      section={ctn.nav.solutions.link}
+      name={ctn.nav.solutions.title}
+    />
+    <NavButton
+      section={ctn.nav.about.link}
+      name={ctn.nav.about.title}
+    />
+    <NavButton
+      section={ctn.nav.contacts.link}
+      name={ctn.nav.contacts.title}
+    />
+  </nav>
+  <div class="flex flex-row items-center">
+    <div class="hidden md:flex flex-row items-center">
+      <div class="mr-[8px]"><img src={phoneSvg.src} alt="phone" /></div>
+      <span class="text-[16px] font-medium "><a href={ctn.tel.number}>{ctn.tel.title}</a></span>
+    </div>
+    <div>
+      <img id="open-modal" class="block md:hidden p-[5px] cursor-pointer" src={burgerSvg.src} alt="logo"/>
+    </div>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-header flex justify-between items-center">
+      <div>
+        <img class="w-[137px]" src={logoSvg.src} alt="logo"/>
+      </div>
+      <div id="close-modal" class="p-[5px] cursor-pointer">
+        <img src={crossSvg.src} alt="logo"/>
+      </div>
+    </div>
+    <div class="flex flex-col mt-[32px] gap-[24px]">
+      <nav class="modal-nav flex flex-col gap-[24px]">
+        <span><a href={ctn.nav.solutions.link}>{ctn.nav.solutions.title}</a></span>
+        <span><a href={ctn.nav.about.link}>{ctn.nav.about.title}</a></span>
+        <span><a href={ctn.nav.contacts.link}>{ctn.nav.contacts.title}</a></span>
+      </nav>
+      <div class="flex flex-row items-center">
+        <div class="mr-[8px]"><img src={phoneSvg.src} alt="phone" /></div>
+        <span class="text-[16px] font-medium "><a href={ctn.tel.number}>{ctn.tel.title}</a></span>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
+
+<style lang="scss">
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: #FFF;
+    width: 100vw;
+    height: 100vh;
+    padding: 24px;
+    &-nav {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+</style>
+
+
+<script>
+  document.getElementById('open-modal')?.addEventListener('click', ()=> {
+    document.getElementById('modal')?.classList.remove('hidden')
+  })
+
+  document.getElementById('close-modal')?.addEventListener('click', ()=> {
+    document.getElementById('modal')?.classList.add('hidden')
+  })
+
+  document.querySelectorAll('a').forEach((item) => {
+    item.addEventListener('click', () => {
+      document.getElementById('modal')?.classList.add('hidden')
+    })
+  })
+</script>
