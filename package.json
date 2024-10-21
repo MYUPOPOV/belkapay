@@ -19,7 +19,6 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/tailwind": "^5.1.2",
-    "@rbs/tools": "^0.3.40",
     "astro": "^4.16.4",
     "husky": "^9.1.6",
     "include-media": "^2.0.0",

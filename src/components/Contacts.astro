@@ -143,15 +143,12 @@ const isContacts = true
 </style>
 
 <script>
-  import { email } from '@rbs/tools/validation';
   const button = document.getElementById('submit');
   const nameInput = document.getElementById('name') as HTMLInputElement;
   const emailInput = document.getElementById('email') as HTMLInputElement;
   const commentInput = document.getElementById('comment') as HTMLInputElement;
 
   "keyup paste mouseup".split(" ").forEach(function(e){
-      // window.addEventListener(e,mouseMoveHandler,false);
-
       nameInput.addEventListener(e, () => {
         checkInput(nameInput.value, nameInput, validateName)
       })
@@ -177,7 +174,7 @@ const isContacts = true
     return /[a-zA-Zа-яА-ЯёЁ '`.\-]{3,64}$/g.test(name);
   }
   const validateEmail = (emailAddress: string) => {
-    return !email({errorMessage: 'error'})(emailAddress);
+    return /^[a-zA-Z0-9._-]{1,64}@([a-zA-Z0-9.-]{2,255})\.[a-zA-Z]{2,255}$/.test(emailAddress)
   }
   const validateComment = (comment: string) => {
     return !/[<>]/.test(comment);
