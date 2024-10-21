@@ -166,7 +166,10 @@ const isContacts = true
       checkInput(emailInput.value, emailInput, validateEmail) &&
       checkInput(commentInput.value, commentInput, validateComment)
     ) {
-      alert('Отпрвавка формы')
+      alert('Заявка отправлена');
+      nameInput.value = "";
+      emailInput.value = "";
+      commentInput.value = "";
     }
   })
 
