@@ -9,16 +9,15 @@ const { section, name } = Astro.props;
 
 <a href={section}>
   <div class="nav-button mx-[8px] px-[16px] py-[12px]">
-      <span>{name}</span>
+    <span>{name}</span>
   </div>
 </a>
 
-
 <style lang="scss">
   .nav-button {
-    background-color: #ffffff;
     border-radius: 100px;
-    font-size: 16px;
+    background-color: #ffffff;
     font-weight: 500;
+    font-size: 16px;
   }
 </style>

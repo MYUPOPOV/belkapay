@@ -1,26 +1,26 @@
 ---
-import { content } from "../scripts/content"
-import phoneSvg from "../images/icons/phone-footer.svg"
+import { content } from '../scripts/content';
+import phoneSvg from '../images/icons/phone-footer.svg';
 
-const ctn = content.info
-const date = new Date()
-const year = date.getFullYear()
+const ctn = content.info;
+const date = new Date();
+const year = date.getFullYear();
 ---
 
-<footer class="text-white py-[32px]">
+<footer class="py-[32px] text-white">
   <div class="footer">
     <div class="footer-row justify-between">
       <nav class="flex flex-row items-center gap-[24px]">
-        <span><a href={ctn.nav.solutions.link}>{ctn.nav.solutions.title}</a></span>
-        <span><a href={ctn.nav.about.link}>{ctn.nav.about.title}</a></span>
-        <span><a href={ctn.nav.contacts.link}>{ctn.nav.contacts.title}</a></span>
+        <span><a href={ctn.nav.solutions.linkPage}>{ctn.nav.solutions.title}</a></span>
+        <span><a href={ctn.nav.about.linkPage}>{ctn.nav.about.title}</a></span>
+        <span><a href={ctn.nav.contacts.linkPage}>{ctn.nav.contacts.title}</a></span>
       </nav>
       <div class="address">
         <div><a href={ctn.addressLink}>{ctn.address}</a></div>
       </div>
       <div class="flex flex-row items-center">
-        <div class="mr-[8px]"><img src={phoneSvg.src} alt="phone"/></div>
-        <span class="text-[16px] font-medium "><a href= {ctn.tel.number}>{ctn.tel.title}</a></span>
+        <div class="mr-[8px]"><img src={phoneSvg.src} alt="phone" /></div>
+        <span class="text-[16px] font-medium"><a href={ctn.tel.number}>{ctn.tel.title}</a></span>
       </div>
     </div>
     <div class="footer-row justify-center">
@@ -29,20 +29,19 @@ const year = date.getFullYear()
   </div>
 </footer>
 
-
 <style lang="scss">
   .footer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
+    justify-content: center;
     gap: 32px;
     &-row {
-      width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 12px;
       align-items: start;
+      width: 100%;
+      gap: 12px;
       @include media('>=desktop') {
         flex-direction: row;
         align-items: center;
@@ -53,6 +52,6 @@ const year = date.getFullYear()
     }
   }
   .address {
-    color: #FFFFFF8F
+    color: #ffffff8f;
   }
 </style>

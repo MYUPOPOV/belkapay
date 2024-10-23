@@ -1,6 +1,6 @@
 ---
-import { content } from "../scripts/content"
-import arrowSvg from "../images/icons/arrow.svg"
+import { content } from '../scripts/content';
+import arrowSvg from '../images/icons/arrow.svg';
 
 interface Props {
   isContacts: boolean;
@@ -9,44 +9,38 @@ interface Props {
 const { isContacts } = Astro.props;
 ---
 
-{!isContacts && 
-  (
+{
+  !isContacts && (
     <a href="#contacts">
       <button class="btn">
-        <span class="mr-[8px]">
-          {content.main.btnText}
-        </span>
+        <span class="mr-[8px]">{content.main.btnText}</span>
         <img src={arrowSvg.src} alt="arrow" />
       </button>
     </a>
   )
 }
 
-{isContacts && 
-  (
+{
+  isContacts && (
     <button id="submit" class="btn">
-      <span class="mr-[8px]">
-        {content.main.btnText}
-      </span>
+      <span class="mr-[8px]">{content.main.btnText}</span>
       <img src={arrowSvg.src} alt="arrow" />
     </button>
   )
 }
 
-
 <style lang="scss">
   .btn {
-    width: 100%;
-    color: #ffffff;
     display: flex;
-    padding: 20px 40px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 40px;
     border-radius: 100px;
-    background: linear-gradient(90deg, #C21022 0%, #FC0D0C 100%);
+    background: linear-gradient(90deg, #c21022 0%, #fc0d0c 100%);
+    color: #ffffff;
     @include media('>=tablet') {
       width: auto;
     }
   }
-
 </style>

@@ -15,14 +15,7 @@ const pictureAlt = content.info.image + ': ' + title;
 
 <div class="card">
   <div class="image">
-    <Picture
-      src={image}
-      formats={['avif', 'webp']}
-      alt={pictureAlt}
-      class="m-auto"
-      width=320
-      densities={[1.5, 2]}
-    />
+    <Picture src={image} formats={['avif', 'webp']} alt={pictureAlt} class="m-auto" width="320" densities={[1.5, 2]} />
   </div>
   <div class="title">{title}</div>
   <div class="my-[16px]">{text}</div>
@@ -36,33 +29,32 @@ const pictureAlt = content.info.image + ': ' + title;
     flex: 0 0 30%;
     width: 100%;
     min-height: 596px;
+    padding: 16px;
     border-radius: 16px;
     background: #fff;
-    padding: 16px;
   }
   .image {
-    border-radius: 8px;
-    background: #EFF1F4;
-    padding: 8px;
     display: flex;
-    height: 300px;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
     align-self: stretch;
+    justify-content: center;
+    height: 300px;
+    padding: 8px;
+    gap: 10px;
+    border-radius: 8px;
+    background: #eff1f4;
   }
   .title {
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 28px;
     margin-top: 24px;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 28px;
   }
   .list {
-    color: #8291AE;
+    padding-left: 20px;
+    color: #8291ae;
     font-size: 14px;
     line-height: 20px;
-    padding-left: 20px;
-    
   }
 </style>

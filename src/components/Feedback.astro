@@ -1,8 +1,8 @@
 ---
-import { content } from "../scripts/content"
-import Button from "./RequestButton.astro"
+import { content } from '../scripts/content';
+import Button from './RequestButton.astro';
 
-const ctn = content.contacts
+const ctn = content.contacts;
 ---
 
 <div class="feedback-form">
@@ -17,7 +17,7 @@ const ctn = content.contacts
     </div>
     <div class="input-block">
       <div class="input-label">{ctn.inputs[2].label}</div>
-      <textarea id="comment" placeholder={ctn.inputs[2].placeholder} class="input-comment" />
+      <textarea id="comment" placeholder={ctn.inputs[2].placeholder} class="input-comment"></textarea>
     </div>
   </div>
   <div class="button">
@@ -28,43 +28,44 @@ const ctn = content.contacts
   </div>
 </div>
 
-
 <style lang="scss">
   .feedback-form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
     align-self: stretch;
+    gap: 32px;
   }
   .input {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
     align-self: stretch;
+    width: 100%;
+    gap: 16px;
     &-label {
-    margin-bottom: 10px;
-  }
+      margin-bottom: 10px;
+    }
     &-block {
       width: 100%;
     }
     &-comment {
       height: 146px;
     }
-    & input, & textarea {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #CAD2E1;
+    & input,
+    & textarea {
       display: flex;
-      padding: 15px;
       align-items: flex-start;
-      gap: 10px;
       align-self: stretch;
+      width: 100%;
+      padding: 15px;
+      gap: 10px;
+      border: 1px solid #cad2e1;
+      border-radius: 8px;
       resize: none;
     }
-    & input:focus, & textarea:focus {
+    & input:focus,
+    & textarea:focus {
       outline: none;
     }
   }
@@ -72,20 +73,20 @@ const ctn = content.contacts
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
     align-self: stretch;
+    gap: 8px;
     &-text {
-      color: #8291AE;
+      margin-top: 8px;
+      color: #8291ae;
       font-size: 14px;
       line-height: 20px;
-      margin-top: 8px;
       @include media('>=tablet') {
         width: 470px;
       }
     }
   }
   .invalid {
-    border: 1px solid #C30F22 !important;
+    border: 1px solid #c30f22 !important;
     background-color: #c30f2105;
   }
 </style>
@@ -96,17 +97,17 @@ const ctn = content.contacts
   const emailInput = document.getElementById('email') as HTMLInputElement;
   const commentInput = document.getElementById('comment') as HTMLInputElement;
 
-  "keyup paste mouseup".split(" ").forEach(function(e){
-      nameInput.addEventListener(e, () => {
-        checkInput(nameInput.value, nameInput, validateName)
-      })
-      emailInput.addEventListener(e, () => {
-        checkInput(emailInput.value, emailInput, validateEmail)
-      })
-      commentInput.addEventListener(e, () => {
-        checkInput(commentInput.value, commentInput, validateComment)
-      })
+  'keyup paste mouseup'.split(' ').forEach(function (e) {
+    nameInput.addEventListener(e, () => {
+      checkInput(nameInput.value, nameInput, validateName);
     });
+    emailInput.addEventListener(e, () => {
+      checkInput(emailInput.value, emailInput, validateEmail);
+    });
+    commentInput.addEventListener(e, () => {
+      checkInput(commentInput.value, commentInput, validateComment);
+    });
+  });
 
   button?.addEventListener('click', () => {
     if (
@@ -115,28 +116,28 @@ const ctn = content.contacts
       checkInput(commentInput.value, commentInput, validateComment)
     ) {
       alert('Заявка отправлена');
-      nameInput.value = "";
-      emailInput.value = "";
-      commentInput.value = "";
+      nameInput.value = '';
+      emailInput.value = '';
+      commentInput.value = '';
     }
-  })
+  });
 
   const validateName = (name: string) => {
     return /[a-zA-Zа-яА-ЯёЁ '`.\-]{3,64}$/g.test(name);
-  }
+  };
   const validateEmail = (emailAddress: string) => {
-    return /^[a-zA-Z0-9._-]{1,64}@([a-zA-Z0-9.-]{2,255})\.[a-zA-Z]{2,255}$/.test(emailAddress)
-  }
+    return /^[a-zA-Z0-9._-]{1,64}@([a-zA-Z0-9.-]{2,255})\.[a-zA-Z]{2,255}$/.test(emailAddress);
+  };
   const validateComment = (comment: string) => {
     return !/[<>]/.test(comment);
-  }
+  };
   const checkInput = (value: string, input: HTMLElement, validFunc: Function) => {
     if (validFunc(value)) {
-      input.classList.remove('invalid')
-      return true
+      input.classList.remove('invalid');
+      return true;
     } else {
-      input.classList.add('invalid')
-      return false
+      input.classList.add('invalid');
+      return false;
     }
-  }
+  };
 </script>

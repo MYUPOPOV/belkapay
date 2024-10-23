@@ -1,53 +1,45 @@
 ---
-import { content } from "../scripts/content"
-import coinsSvg from "../images/principles/coins.svg"
-import computerSvg from "../images/principles/computer.svg"
-import cycleSvg from "../images/principles/cycle.svg"
-import diamondSvg from "../images/principles/diamond.svg"
-import safeSvg from "../images/principles/safe.svg"
-import Card from "./PrinciplesCard.astro"
+import { content } from '../scripts/content';
+import coinsSvg from '../images/principles/coins.svg';
+import computerSvg from '../images/principles/computer.svg';
+import cycleSvg from '../images/principles/cycle.svg';
+import diamondSvg from '../images/principles/diamond.svg';
+import safeSvg from '../images/principles/safe.svg';
+import Card from './PrinciplesCard.astro';
 
-const imagesArr = [cycleSvg, safeSvg, diamondSvg, coinsSvg, computerSvg]
-const ctn = content.principles
+const imagesArr = [cycleSvg, safeSvg, diamondSvg, coinsSvg, computerSvg];
+const ctn = content.principles;
 ---
 
 <section class="mt-[96px]">
   <div class="title">{ctn.title}</div>
   <div class="cards mt-[32px]">
-    {
-      ctn.list.map((item, index) => (
-        <Card 
-          text={item.text}
-          image={imagesArr[index]}
-        />
-      ))
-    }
+    {ctn.list.map((item, index) => <Card text={item.text} image={imagesArr[index]} />)}
   </div>
 </section>
-
 
 <style lang="scss">
   .cards {
     display: flex;
-    flex-direction: row;;
-    align-items: flex-start;
-    gap: 32px;
-    align-self: stretch;
 
     display: grid;
     grid-template-columns: 1fr;
-    gap:32px;
+    flex-direction: row;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: 32px;
+    gap: 32px;
     @include media('>=560px') {
-      grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
     @include media('>=tablet') {
-      grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
     }
     @include media('>=desktop') {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
   }
 </style>

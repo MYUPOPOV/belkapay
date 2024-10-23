@@ -15,39 +15,32 @@ const { number, title, textArr, isLast } = Astro.props;
     <span class="title-text">{title}</span>
   </div>
   {
-    (textArr.length < 5) && (
-      <div  class="text">
-      {
-        textArr.map((item) => (
+    textArr.length < 5 && (
+      <div class="text">
+        {textArr.map((item) => (
           <p>{item}</p>
-        ))
-      }
+        ))}
       </div>
     )
   }
-    {
-      (textArr.length >= 5) && (
-        <ul  class="text">
-        {
-          textArr.map((item) => (
-            <li>{item}</li>
-          ))
-        }
-        </ul>
-      )
-    }
-
-  
+  {
+    textArr.length >= 5 && (
+      <ul class="text">
+        {textArr.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    )
+  }
 </div>
-{!isLast && <div class="line"></div>}
-
+{!isLast && <div class="line" />}
 
 <style lang="scss">
   .block {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
     width: 100%;
+    gap: 24px;
     @include media('>=desktop') {
       grid-template-columns: 1fr 1fr;
       gap: 32px;
@@ -58,14 +51,14 @@ const { number, title, textArr, isLast } = Astro.props;
     gap: 16px;
   }
   .title-number {
-    font-size: 16px;
     font-weight: 400;
+    font-size: 16px;
     line-height: 20px;
   }
   .title-text {
-    font-size: 24px;
     font-weight: 800;
-    line-height: 28px; 
+    font-size: 24px;
+    line-height: 28px;
   }
   .text {
     display: grid;
@@ -76,7 +69,7 @@ const { number, title, textArr, isLast } = Astro.props;
   .line {
     width: 100%;
     height: 1px;
-    background: #CAD2E1;
+    background: #cad2e1;
   }
   li {
     margin-left: 20px;
