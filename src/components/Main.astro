@@ -4,8 +4,13 @@ import { Picture } from 'astro:assets';
 import Button from "./RequestButton.astro"
 import mainImage from "../images/main.png";
 
+interface Props {
+  isFeedback: boolean;
+}
+
+const { isFeedback } = Astro.props;
+
 const ctn = content.main
-const isContacts = false
 ---
 
 <section class="mt-[40px] md:mt-[96px] flex flex-flexrow justify-between">
@@ -17,7 +22,7 @@ const isContacts = false
     </div>
     <div class="mt-[24px] font-semibold ">{ctn.text}</div>
     <div class="mt-[32px] md:mt-[52px]">
-      <Button isContacts={isContacts} />
+      {isFeedback && <Button isContacts={false} />}
     </div>
   </div>
   <div class="min-w-[42%] hidden md:block">

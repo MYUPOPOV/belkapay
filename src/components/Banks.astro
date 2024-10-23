@@ -1,26 +1,36 @@
 ---
 import { content } from "../scripts/content"
-// import { Picture } from 'astro:assets';
-// import logoSvg from "../images/logo.svg"
-// import phoneSvg from "../images/phone.svg"
-// import NavButton from "./NavButton.astro"
+import Block from "./AboutBlock.astro"
 
-// interface Props {
-  // context: string;
-// }
-
-// const { context } = Astro.props;
-
+const ctn = content.banks
 ---
 
-<section>
+<section id="about" class="mt-[96px]">
+  <div class="title">{ctn.title}</div>
 
-
+    <div class="mt-[32px] border">
+      {
+        ctn.list.map(({number, title, textArr}, index, arr) => (
+          <Block 
+            number={number}
+            title={title}
+            textArr={textArr}
+            isLast={index === arr.length - 1}
+          />
+        ))
+      }
+    </div>
 </section>
 
 
 <style lang="scss">
-
-
-
+  .border {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    border-radius: 16px;
+    border: 1px solid #CAD2E1;
+    padding: 32px;
+  }
 </style>

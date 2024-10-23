@@ -6,24 +6,33 @@ import phoneSvg from "../images/icons/phone.svg"
 import burgerSvg from "../images/icons/burger.svg"
 import NavButton from "./NavButton.astro"
 
+interface Props {
+  isMultiPage: boolean;
+}
+
+const { isMultiPage } = Astro.props;
 const ctn = content.info
+
+
 ---
 
 <header class="mt-[24px] md:mt-[32px]">
   <div class="flex items-center">
-    <img class="w-[137px] md:w-[110px] lg:w-[137px]" src={logoSvg.src} alt="logo"/>
+    <a href="./index.html">
+      <img class="w-[137px] md:w-[110px] lg:w-[137px]" src={logoSvg.src} alt="logo"/>
+    </a>
   </div>
   <nav class="hidden md:flex flex-row items-center">
     <NavButton
-      section={ctn.nav.solutions.link}
+      section={ isMultiPage ? ctn.nav.solutions.linkPage : ctn.nav.solutions.link }
       name={ctn.nav.solutions.title}
     />
     <NavButton
-      section={ctn.nav.about.link}
+      section={ isMultiPage ? ctn.nav.about.linkPage : ctn.nav.about.link }
       name={ctn.nav.about.title}
     />
     <NavButton
-      section={ctn.nav.contacts.link}
+      section={ isMultiPage ? ctn.nav.contacts.linkPage : ctn.nav.contacts.link }
       name={ctn.nav.contacts.title}
     />
   </nav>

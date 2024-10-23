@@ -5,15 +5,15 @@ import Main from '../components/Main.astro';
 import Solutions from '../components/Solutions.astro';
 import About from '../components/About.astro';
 import Principles from '../components/Principles.astro';
-import ContactsOnly from '../components/ContactsOnly.astro';
+import Contacts from '../components/ContactsFeedback.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="BelkaPay">
   <div class="wrapper">
-    <Header isMultiPage={true} />
+    <Header isMultiPage={false} />
     <main>
-      <Main isFeedback={false} />
+      <Main isFeedback={true} />
       <Solutions />
       <About isIndexPage={true} />
       <Principles />
@@ -21,12 +21,12 @@ import Footer from '../components/Footer.astro';
   </div>
   <div class="contacts">
     <div class="wrapper">
-      <ContactsOnly />
+      <Contacts isFeedback={true} />
     </div>
   </div>
   <div class="footer">
     <div class="wrapper">
-      <Footer isMultiPage={true} />
+      <Footer />
     </div>
   </div>
 </Layout>

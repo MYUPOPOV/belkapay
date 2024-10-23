@@ -1,10 +1,14 @@
 ---
 import { content } from "../scripts/content"
-import Button from "./RequestButton.astro"
+import Feedback from "./Feedback.astro"
 
+interface Props {
+  isFeedback: boolean;
+}
+
+const { isFeedback } = Astro.props;
 
 const ctn = content.contacts
-const isContacts = true
 ---
 
 <section id="contacts" class="mt-[96px]">
@@ -25,28 +29,12 @@ const isContacts = true
       }
     </div>
     <div class="right">
-      <div class="feedback-form">
-        <div class="input">
-          <div class="input-block">
-            <div class="input-label">{ctn.inputs[0].label}</div>
-            <input id="name" placeholder={ctn.inputs[0].placeholder} />
-          </div>
-          <div class="input-block">
-            <div class="input-label">{ctn.inputs[1].label}</div>
-            <input id="email" placeholder={ctn.inputs[1].placeholder} />
-          </div>
-          <div class="input-block">
-            <div class="input-label">{ctn.inputs[2].label}</div>
-            <textarea id="comment" placeholder={ctn.inputs[2].placeholder} class="input-comment" />
-          </div>
-        </div>
-        <div class="button">
-          <div class="w-[100%]">
-            <Button isContacts={isContacts} />
-          </div>
-          <div class="button-text">{ctn.text}</div>
-        </div>
-      </div>
+      {isFeedback && <Feedback />}
+      {
+        !isFeedback && (
+          <a href="https://yandex.ru/maps/?um=constructor%3A14aa7a9de7bcd3760433118b7d2e5e9cdb41e7365a46f11b7f8415dbd280579b&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A14aa7a9de7bcd3760433118b7d2e5e9cdb41e7365a46f11b7f8415dbd280579b&amp;width=500&amp;height=450&amp;lang=ru_RU" alt="" style="border: 0;" /></a>
+        )
+      }
     </div>
   </div>
 </section>
@@ -82,113 +70,4 @@ const isContacts = true
     align-items: center;
     flex: 1 0 0;
   }
-  .feedback-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-    align-self: stretch;
-  }
-  .input {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    align-self: stretch;
-    &-label {
-    margin-bottom: 10px;
-  }
-    &-block {
-      width: 100%;
-    }
-    &-comment {
-      height: 146px;
-    }
-    & input, & textarea {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #CAD2E1;
-      display: flex;
-      padding: 15px;
-      align-items: flex-start;
-      gap: 10px;
-      align-self: stretch;
-      resize: none;
-    }
-    & input:focus, & textarea:focus {
-      outline: none;
-    }
-  }
-  .button {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    align-self: stretch;
-    &-text {
-      color: #8291AE;
-      font-size: 14px;
-      line-height: 20px;
-      margin-top: 8px;
-      @include media('>=tablet') {
-        width: 470px;
-      }
-    }
-  }
-  .invalid {
-    border: 1px solid #C30F22 !important;
-    background-color: #c30f2105;
-  }
 </style>
-
-<script>
-  const button = document.getElementById('submit');
-  const nameInput = document.getElementById('name') as HTMLInputElement;
-  const emailInput = document.getElementById('email') as HTMLInputElement;
-  const commentInput = document.getElementById('comment') as HTMLInputElement;
-
-  "keyup paste mouseup".split(" ").forEach(function(e){
-      nameInput.addEventListener(e, () => {
-        checkInput(nameInput.value, nameInput, validateName)
-      })
-      emailInput.addEventListener(e, () => {
-        checkInput(emailInput.value, emailInput, validateEmail)
-      })
-      commentInput.addEventListener(e, () => {
-        checkInput(commentInput.value, commentInput, validateComment)
-      })
-    });
-
-  button?.addEventListener('click', () => {
-    if (
-      checkInput(nameInput.value, nameInput, validateName) &&
-      checkInput(emailInput.value, emailInput, validateEmail) &&
-      checkInput(commentInput.value, commentInput, validateComment)
-    ) {
-      alert('Заявка отправлена');
-      nameInput.value = "";
-      emailInput.value = "";
-      commentInput.value = "";
-    }
-  })
-
-  const validateName = (name: string) => {
-    return /[a-zA-Zа-яА-ЯёЁ '`.\-]{3,64}$/g.test(name);
-  }
-  const validateEmail = (emailAddress: string) => {
-    return /^[a-zA-Z0-9._-]{1,64}@([a-zA-Z0-9.-]{2,255})\.[a-zA-Z]{2,255}$/.test(emailAddress)
-  }
-  const validateComment = (comment: string) => {
-    return !/[<>]/.test(comment);
-  }
-  const checkInput = (value: string, input: HTMLElement, validFunc: Function) => {
-    if (validFunc(value)) {
-      input.classList.remove('invalid')
-      return true
-    } else {
-      input.classList.add('invalid')
-      return false
-    }
-  }
-</script>
