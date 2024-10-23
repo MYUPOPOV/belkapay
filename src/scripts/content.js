@@ -5,17 +5,17 @@ export const content = {
       solutions: {
         title: "Решения",
         link: "#solutions",
-        linkPage: "/belkapay/solutions/index.html",
+        linkPage: "./solutions.html",
       },
       about: {
         title: "О компании",
         link: "#about",
-        linkPage: "/belkapay/about/index.html",
+        linkPage: "./about.html",
       },
       contacts: {
         title: "Контакты",
         link: "#contacts",
-        linkPage: "/belkapay/contacts/index.html",
+        linkPage: "./contacts.html",
       }
     },
     tel: {

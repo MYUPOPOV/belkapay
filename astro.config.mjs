@@ -7,9 +7,9 @@ export default defineConfig({
   site: 'https://myupopov.github.io',
   base: 'belkapay',
   integrations: [tailwind()],
-  // build: {
-  //   format: 'file',
-  // },
+  build: {
+    format: 'file',
+  },
   vite: {
     css: {
       preprocessorOptions: {
