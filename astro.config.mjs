@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://myupopov.github.io',
   base: 'belkapay',
   integrations: [tailwind()],
+  outDir: './build',
   build: {
     format: 'file',
   },
