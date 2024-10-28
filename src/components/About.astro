@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { isIndexPage } = Astro.props;
+const titleCls = isIndexPage ? "title" : "title-main"
 const ctn = content.about;
 ---
 
 <section id="about" class="mt-[96px]">
-  <div class="title">{ctn.title}</div>
+  <div class={titleCls}>{ctn.title}</div>
 
   {
     !isIndexPage && (

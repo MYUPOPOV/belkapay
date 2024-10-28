@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import SolutionsSection from '../components/Solutions.astro';
-import Banks from '../components/Banks.astro';
 import ContactsOnly from '../components/ContactsOnly.astro';
 import Footer from '../components/Footer.astro';
 ---
@@ -11,13 +10,12 @@ import Footer from '../components/Footer.astro';
   <div class="wrapper">
     <Header isMultiPage={true} />
     <main>
-      <SolutionsSection />
-      <Banks />
+      <SolutionsSection isIndexPage={false} />
     </main>
   </div>
   <div class="contacts">
     <div class="wrapper">
-      <ContactsOnly />
+      <ContactsOnly isIndexPage={true} />
     </div>
   </div>
   <div class="footer">

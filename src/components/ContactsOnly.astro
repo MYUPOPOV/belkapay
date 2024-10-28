@@ -1,13 +1,19 @@
 ---
 import { content } from '../scripts/content';
+interface Props {
+  isIndexPage: boolean;
+}
 
+const { isIndexPage } = Astro.props;
+const titleCls = isIndexPage ? "title" : "title-main";
+const sectionMargin = isIndexPage ? "mt-[96px]" : "";
 const ctn = content.contacts;
 ---
 
-<section id="contacts" class="mt-[96px]">
+<section id="contacts" class={sectionMargin}>
   <div class="contacts-block">
-    <div class="title">{ctn.title}</div>
-    <div class="center py-[32px] md:py-[48px]">
+    <div class={titleCls}>{ctn.title}</div>
+    <div class="center py-[16px] md:py-[20px]">
       {
         ctn.list.map((item) => (
           <div>

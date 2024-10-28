@@ -1,32 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import Main from '../components/Main.astro';
+import List from '../components/Solutions_P2p.astro';
 import Solutions from '../components/Solutions.astro';
-import About from '../components/About.astro';
-import Principles from '../components/Principles.astro';
-import Contacts from '../components/Contacts.astro';
+import ContactsOnly from '../components/ContactsOnly.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="BelkaPay">
   <div class="wrapper">
-    <Header isMultiPage={false} />
+    <Header isMultiPage={true} />
     <main>
-      <Main isFeedback={true} />
+      <List />
       <Solutions isIndexPage={true} />
-      <About isIndexPage={true} />
-      <Principles />
     </main>
   </div>
   <div class="contacts">
     <div class="wrapper">
-      <Contacts isFeedback={true} />
+      <ContactsOnly isIndexPage={true} />
     </div>
   </div>
   <div class="footer">
     <div class="wrapper">
-      <Footer />
+      <Footer isMultiPage={true} />
     </div>
   </div>
 </Layout>

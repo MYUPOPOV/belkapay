@@ -39,6 +39,9 @@ const { isContacts } = Astro.props;
     border-radius: 100px;
     background: linear-gradient(90deg, #c21022 0%, #fc0d0c 100%);
     color: #ffffff;
+    &:hover {
+      background: linear-gradient(90deg, #FC0D0C 0%, #C21022 100%);
+    }
     @include media('>=tablet') {
       width: auto;
     }

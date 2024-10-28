@@ -6,32 +6,54 @@ interface Props {
   title: string;
   text: string;
   list: Array<string>;
+  link: string;
   image: any;
 }
 
-const { title, text, list, image } = Astro.props;
+const { title, text, list, image, link } = Astro.props;
 const pictureAlt = content.info.image + ': ' + title;
+const details = content.solutions.details;
 ---
 
-<div class="card">
-  <div class="image">
-    <Picture src={image} formats={['avif', 'webp']} alt={pictureAlt} class="m-auto" width="320" densities={[1.5, 2]} />
-  </div>
-  <div class="title">{title}</div>
-  <div class="my-[16px]">{text}</div>
-  <ul class="list">
-    {list.map((item) => <li class="item">{item}</li>)}
-  </ul>
+<div>
+  <a href={link}>
+    <div class="card">
+        <div class="image">
+          <Picture src={image} formats={['avif', 'webp']} alt={pictureAlt} class="m-auto" width="320" densities={[1.5, 2]} />
+        </div>
+        <div class="p-[16px]">
+          <div class="title">{title}</div>
+          <div class="my-[16px]">{text}</div>
+          <ul class="list">
+            {list.map((item) => <li class="item">{item}</li>)}
+          </ul>
+          <div class="details">{details}</div>
+        </div>
+    </div>
+  </a>
 </div>
+
 
 <style lang="scss">
   .card {
     flex: 0 0 30%;
     width: 100%;
-    min-height: 596px;
+    height: 100%;
+    min-height: 612px;
     padding: 16px;
+    border: 2px solid #fff;
     border-radius: 16px;
     background: #fff;
+    &:hover {
+      border: 2px solid #C21022;
+      cursor: pointer;
+      & .details {
+        color: #C21022;
+      }
+    }
+    & a {
+      
+    }
   }
   .image {
     display: flex;
@@ -56,5 +78,10 @@ const pictureAlt = content.info.image + ': ' + title;
     color: #8291ae;
     font-size: 14px;
     line-height: 20px;
+  }
+  .details {
+    margin-top: 16px;
+    font-weight: 500;
+    color: #FC0D0C;
   }
 </style>

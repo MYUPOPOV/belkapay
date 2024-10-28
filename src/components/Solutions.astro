@@ -6,18 +6,23 @@ import aviaImg from '../images/solutions/avia.png';
 import tspImg from '../images/solutions/tsp.png';
 import transportImg from '../images/solutions/transport.png';
 import p2pImg from '../images/solutions/p2p.png';
+interface Props {
+  isIndexPage: boolean;
+}
 
+const { isIndexPage } = Astro.props;
+const titleCls = isIndexPage ? "title" : "title-main";
 const ctn = content.solutions;
 ---
 
 <section id="solutions" class="mt-[52px] md:mt-[96px]">
-  <div class="title">{ctn.title}</div>
+  <div class={titleCls}>{ctn.title}</div>
   <div class="cards mt-[32px]">
-    <Card title={ctn.banks.title} text={ctn.banks.text} list={ctn.banks.list} image={bankImg} />
-    <Card title={ctn.avia.title} text={ctn.avia.text} list={ctn.avia.list} image={aviaImg} />
-    <Card title={ctn.tsp.title} text={ctn.tsp.text} list={ctn.tsp.list} image={tspImg} />
-    <Card title={ctn.transport.title} text={ctn.transport.text} list={ctn.transport.list} image={transportImg} />
-    <Card title={ctn.p2p.title} text={ctn.p2p.text} list={ctn.p2p.list} image={p2pImg} />
+    <Card title={ctn.banks.title} text={ctn.banks.text} list={ctn.banks.list} link={ctn.banks.link} image={bankImg} />
+    <Card title={ctn.avia.title} text={ctn.avia.text} list={ctn.avia.list} link={ctn.avia.link} image={aviaImg} />
+    <Card title={ctn.tsp.title} text={ctn.tsp.text} list={ctn.tsp.list} link={ctn.tsp.link} image={tspImg} />
+    <Card title={ctn.transport.title} text={ctn.transport.text} list={ctn.transport.list} link={ctn.transport.link} image={transportImg} />
+    <Card title={ctn.p2p.title} text={ctn.p2p.text} list={ctn.p2p.list} link={ctn.p2p.link} image={p2pImg} />
   </div>
 </section>
 
