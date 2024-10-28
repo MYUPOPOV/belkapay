@@ -12,11 +12,11 @@ const ctn = content.contacts;
 
 <section id="contacts" class={sectionMargin}>
   <div class="contacts-block">
-    <div class={titleCls}>{ctn.title}</div>
+    <div class={titleCls} data-aos="fade-up" data-aos-delay="700">{ctn.title}</div>
     <div class="center py-[16px] md:py-[20px]">
       {
         ctn.list.map((item) => (
-          <div>
+          <div data-aos="fade-up" data-aos-delay="700">
             <div class="item-title mt-[32px]">{item.title}</div>
             <div class="mt-[12px]">
               {item.textArr.map((item) => (

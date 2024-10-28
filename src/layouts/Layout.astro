@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import 'aos/dist/aos.css';
 interface Props {
   title: string;
 }
@@ -63,3 +64,8 @@ const { title } = Astro.props;
     }
   }
 </style>
+
+<script>
+  import AOS from "aos"; 
+  AOS.init();
+</script>
