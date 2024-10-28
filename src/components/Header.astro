@@ -44,7 +44,9 @@ const ctn = content.info;
   <div id="modal" class="modal hidden">
     <div class="modal-header flex items-center justify-between">
       <div>
-        <img class="w-[137px]" src={logoSvg.src} alt="logo" />
+        <a href="./index.html">
+          <img class="w-[137px]" src={logoSvg.src} alt="logo" />
+        </a>
       </div>
       <div id="close-modal" class="cursor-pointer p-[5px]">
         <img src={crossSvg.src} alt="logo" />
@@ -93,11 +95,5 @@ const ctn = content.info;
 
   document.getElementById('close-modal')?.addEventListener('click', () => {
     document.getElementById('modal')?.classList.add('hidden');
-  });
-
-  document.querySelectorAll('a').forEach((item) => {
-    item.addEventListener('click', () => {
-      document.getElementById('modal')?.classList.add('hidden');
-    });
   });
 </script>
