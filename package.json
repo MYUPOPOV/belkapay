@@ -36,5 +36,8 @@
   "volta": {
     "node": "21.1.0",
     "npm": "10.2.3"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.7"
   }
 }
