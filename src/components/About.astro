@@ -12,11 +12,11 @@ const ctn = content.about;
 ---
 
 <section id="about" class="mt-[96px]">
-  <div class={titleCls} data-aos="fade-up" data-aos-delay="700">{ctn.title}</div>
+  <div class={titleCls} data-aos="fade-up">{ctn.title}</div>
 
   {
     !isIndexPage && (
-      <div class="mt-[24px]">
+      <div class="mt-[24px]" data-aos="fade-up">
         {ctn.text.map((item) => (
           <p class="mt-[24px]">{item}</p>
         ))}
