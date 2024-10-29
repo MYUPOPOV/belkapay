@@ -69,7 +69,7 @@ const ctn = content.main;
       densities={[1.5, 2]}
       loading="eager"
     />
-      <Picture
+    <Picture
       src={mainChart}
       formats={['avif', 'webp']}
       alt="Mobile phone"
@@ -79,6 +79,7 @@ const ctn = content.main;
       densities={[1.5, 2]}
       loading="eager"
     />
+    <div id="point-static" class="add-picture"></div>
     <div id="point" class="add-picture"></div>
   </div>
 </section>
@@ -130,16 +131,44 @@ const ctn = content.main;
     z-index: -10;
   }
   #point {
-    width: 12px;
-    height: 12px;
-    top: 33%;
-    right: 16.5%;
-    background-color: #c21022;
-    border-radius: 10px;
+    background-color: #c2102270;
     animation: Pulsar 3s linear infinite;
+  }
+  #point-static {
+    transform: scale(2);
+    background-color: #c21022;
+  }
+
+  #point, #point-static {
+    width: 5px;
+    height: 5px;
+    top: 50.4%;
+    right: 3.35%;
+    border-radius: 10px;
+    @include media('<=1360px') {
+      top: 49.4%;
+      right: 3.4%;
+    }
+    @include media('<=1103px') {
+      top: 47.8%;
+    }
+    @include media('<=1088px') {
+      top: 47.5%;
+    }
+    @include media('<=1075px') {
+      top: 47.3%;
+    }
+    @include media('<=1045px') {
+      top: 46%;
+    }
+    @include media('<=1024px') {
+      top: 49%;
+    }
     @include media('<=807px') {
-      top: 31%;
-      right: 16%;
+      top: 46%;
+    }
+    @include media('<=790px') {
+      top: 45%;
     }
   }
   @keyframes Orbita1 {
@@ -176,13 +205,16 @@ const ctn = content.main;
   @keyframes Pulsar {
     0% {
       transform: scale(1);
-    }
-    50% {
-      transform: scale(1.5) ;
+      opacity: 1;
     }
     100% {
-      transform: scale(1);
+      transform: scale(10);
+      opacity: 0;
     }
+    // 100% {
+    //   transform: scale(1);
+    //   opacity: 1;
+    // }
   }
 
 </style>
