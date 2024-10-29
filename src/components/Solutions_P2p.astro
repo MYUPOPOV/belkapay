@@ -7,8 +7,9 @@ const ctn = content.p2p;
 
 <section id="about" class="mt-[96px]">
   <div class="title-main">{ctn.title}</div>
+  <div class="font-semibold mt-[24px]">{ctn.text}</div>
 
-  <div class="mt-[32px] border">
+  <div class="mt-[32px] md:mt-[48px] border">
     {
       ctn.list.map(({ number, title, textArr }, index, arr) => (
         <Block number={number} title={title} textArr={textArr} isLast={index === arr.length - 1} />

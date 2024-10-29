@@ -13,14 +13,14 @@ const { isFeedback } = Astro.props;
 const ctn = content.main;
 ---
 
-<section class="flex-flexrow mt-[40px] flex justify-between md:mt-[96px]">
+<section class="flex-flexrow mt-[40px] md:mb-[-40px] flex justify-between md:mt-[96px]">
   <div class="max-w-[752px] md:mr-[32px]">
     <div class="title-main" data-aos="fade-up">
       <span>{ctn.title}</span>
       <span class="hightlight">White&nbsp;Label</span>:
       <span>{ctn.subtitle}</span>
     </div>
-    <div class="mt-[24px] font-semibold" data-aos="fade-up">{ctn.text}</div>
+    <div class="mt-[24px] lg:mt-[38px] font-semibold" data-aos="fade-up">{ctn.text}</div>
     <div class="mt-[32px] md:mt-[52px]" data-aos="fade-up">
       {isFeedback && <Button isContacts={false} />}
     </div>
@@ -33,6 +33,7 @@ const ctn = content.main;
       class="m-auto"
       width={mainImage.width / 2}
       densities={[1.5, 2]}
+      loading="eager"
     />
   </div>
 </section>
