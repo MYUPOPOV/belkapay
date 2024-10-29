@@ -12,7 +12,7 @@ const ctn = content.principles;
 ---
 
 <section class="mt-[96px]">
-  <div class="title" data-aos="fade-up">{ctn.title}</div>
+  <div class="title">{ctn.title}</div>
   <div class="cards mt-[32px]">
     {ctn.list.map((item, index) => <Card text={item.text} image={imagesArr[index]} />)}
   </div>

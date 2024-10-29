@@ -2,8 +2,11 @@
 import { content } from '../scripts/content';
 import { Picture } from 'astro:assets';
 import Button from './RequestButton.astro';
-import mainImage from '../images/main.png';
-
+import mainImage from '../images/main/main.png';
+import mainChart from '../images/main/chart.png';
+import mainAmount1 from '../images/main/amount1.png';
+import mainAmount2 from '../images/main/amount2.png';
+import mainAmount3 from '../images/main/amount3.png';
 interface Props {
   isFeedback: boolean;
 }
@@ -15,17 +18,18 @@ const ctn = content.main;
 
 <section class="flex-flexrow mt-[40px] md:mb-[-40px] flex justify-between md:mt-[96px]">
   <div class="max-w-[752px] md:mr-[32px]">
-    <div class="title-main" data-aos="fade-up">
+    <div class="title-main">
       <span>{ctn.title}</span>
       <span class="hightlight">White&nbsp;Label</span>:
       <span>{ctn.subtitle}</span>
     </div>
-    <div class="mt-[24px] lg:mt-[38px] font-semibold" data-aos="fade-up">{ctn.text}</div>
-    <div class="mt-[32px] md:mt-[52px]" data-aos="fade-up">
+    <div class="mt-[24px] lg:mt-[38px] font-semibold">{ctn.text}</div>
+    <div class="mt-[32px] md:mt-[52px]">
       {isFeedback && <Button isContacts={false} />}
     </div>
   </div>
-  <div class="hidden min-w-[42%] md:block">
+  <div class="main-picture hidden min-w-[42%] md:block">
+
     <Picture
       src={mainImage}
       formats={['avif', 'webp']}
@@ -35,6 +39,47 @@ const ctn = content.main;
       densities={[1.5, 2]}
       loading="eager"
     />
+    <Picture
+      src={mainAmount1}
+      formats={['avif', 'webp']}
+      alt="Mobile phone"
+      class="add-picture"
+      id="amount1"
+      width={mainImage.width / 2}
+      densities={[1.5, 2]}
+      loading="eager"
+    />
+    <Picture
+      src={mainAmount2}
+      formats={['avif', 'webp']}
+      alt="Mobile phone"
+      class="add-picture"
+      id="amount2"
+      width={mainImage.width / 2}
+      densities={[1.5, 2]}
+      loading="eager"
+    />
+    <Picture
+      src={mainAmount3}
+      formats={['avif', 'webp']}
+      alt="Mobile phone"
+      class="add-picture"
+      id="amount3"
+      width={mainImage.width / 2}
+      densities={[1.5, 2]}
+      loading="eager"
+    />
+      <Picture
+      src={mainChart}
+      formats={['avif', 'webp']}
+      alt="Mobile phone"
+      class="add-picture"
+      id="chart"
+      width={mainImage.width / 2}
+      densities={[1.5, 2]}
+      loading="eager"
+    />
+    <div id="point" class="add-picture"></div>
   </div>
 </section>
 
@@ -45,4 +90,99 @@ const ctn = content.main;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .main-picture {
+    position: relative;
+  }
+  .add-picture {
+    position: absolute;
+  }
+  #amount1 {
+    width: 30%;
+    left: 5%;
+    top: 17%;
+    animation: Orbita1 5s linear infinite;
+    @include media('<=807px') {
+      top: 15%;
+    }
+  }
+  #amount2 {
+    width: 25%;
+    top: 47%;
+    left: 7%;
+    animation: Orbita2 5s linear infinite;
+    @include media('<=807px') {
+      top: 42%;
+    }
+  }
+  #amount3 {
+    width: 24%;
+    top: 80%;
+    left: 20%;
+    animation: Diagonal 5s linear infinite;
+    @include media('<=807px') {
+      top: 70%;
+    }
+  }
+  #chart {
+    width: 50%;
+    right: 0;
+    top: 25%;
+    z-index: -10;
+  }
+  #point {
+    width: 12px;
+    height: 12px;
+    top: 33%;
+    right: 16.5%;
+    background-color: #c21022;
+    border-radius: 10px;
+    animation: Pulsar 3s linear infinite;
+    @include media('<=807px') {
+      top: 31%;
+      right: 16%;
+    }
+  }
+  @keyframes Orbita1 {
+    from { -webkit-transform: rotate(0deg) translateX(3%) rotate(0deg); }
+    to   { -webkit-transform: rotate(360deg) translateX(3%) rotate(-360deg); }
+  }
+  @keyframes Orbita2 {
+    from { -webkit-transform: rotate(0deg) translateY(3%) rotate(0deg); }
+    to   { -webkit-transform: rotate(-360deg) translateY(3%) rotate(360deg); }
+  }
+  @keyframes Orbita1 {
+    0% {
+      -webkit-transform: rotate(0deg) translateY(3%) rotate(0deg) scale(1);
+    }
+    50% {
+      -webkit-transform: rotate(-180deg) translateY(0) rotate(180deg) scale(1.05);
+    }
+    100% {
+      -webkit-transform: rotate(-360deg) translateY(3%) rotate(360deg) scale(1);
+    }
+  }
+
+  @keyframes Diagonal {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(5%, -5%) scale(1.05) ;
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+  @keyframes Pulsar {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5) ;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
 </style>
